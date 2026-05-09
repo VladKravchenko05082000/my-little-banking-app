@@ -1,12 +1,16 @@
 import { Outlet } from "react-router";
+import { Column, FlexBox } from "~/components";
+
+import { Sidebar } from "~/widgets";
 
 export default function DashboardLayout() {
   return (
-    <div>
-      <h1>SomeLayout</h1>
-      <div>
+    <FlexBox className="h-dvh w-full overflow-hidden bg-background">
+      <Sidebar />
+
+      <Column as="main" className="overflow-y-auto">
         <Outlet />
-      </div>
-    </div>
+      </Column>
+    </FlexBox>
   );
 }

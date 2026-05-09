@@ -1,17 +1,25 @@
-import type { FC, ReactNode } from "react";
+import type { ComponentPropsWithoutRef, ElementType, ReactNode } from "react";
 
-interface FlexBoxCenteredProps {
+interface FlexBoxCenteredProps<T extends ElementType = "div"> {
   children?: ReactNode;
   className?: string;
+  as?: T;
 }
 
-export const FlexBoxCentered: FC<FlexBoxCenteredProps> = ({
+export const FlexBoxCentered = <T extends ElementType = "div">({
   children,
   className,
-}) => {
+  as,
+  ...rest
+}: FlexBoxCenteredProps<T> &
+  Omit<ComponentPropsWithoutRef<T>, keyof FlexBoxCenteredProps<T>>) => {
+  const Tag = as ?? "div";
   return (
-    <div className={`flex items-center justify-center ${className ?? ""}`}>
+    <Tag
+      className={`flex items-center justify-center ${className ?? ""}`}
+      {...rest}
+    >
       {children}
-    </div>
+    </Tag>
   );
 };

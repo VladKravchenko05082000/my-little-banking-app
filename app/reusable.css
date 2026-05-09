@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@utility sidebar-footer-divider-top {
+  &::before {
+    content: "";
+    position: absolute;
+    top: calc(var(--spacing) * -4);
+    left: calc(var(--spacing) * -3);
+    right: calc(var(--spacing) * -3);
+    width: calc(100% * var(--spacing) * 6);
+    height: 1px;
+    background-color: var(--border);
+  }
+}

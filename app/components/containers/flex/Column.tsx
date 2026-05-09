@@ -1,10 +1,22 @@
-import type { FC, ReactNode } from "react";
+import type { ComponentPropsWithoutRef, ElementType, ReactNode } from "react";
 
-interface ColumnProps {
+interface ColumnProps<T extends ElementType = "div"> {
+  as?: T;
   children?: ReactNode;
   className?: string;
 }
 
-export const Column: FC<ColumnProps> = ({ children, className }) => {
-  return <div className={`flex-col ${className ?? ""}`}>{children}</div>;
+export const Column = <T extends ElementType = "div">({
+  as,
+  children,
+  className,
+  ...rest
+}: ColumnProps<T> &
+  Omit<ComponentPropsWithoutRef<T>, keyof ColumnProps<T>>) => {
+  const Tag = as ?? "div";
+  return (
+    <Tag className={`flex flex-col ${className ?? ""}`} {...rest}>
+      {children}
+    </Tag>
+  );
 };
