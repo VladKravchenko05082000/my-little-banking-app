@@ -229,12 +229,11 @@
 }
 
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "cv11", "ss01";
+    line-height: 1.5;
+    font-size: 14px;
   }
   html {
     @apply font-sans;

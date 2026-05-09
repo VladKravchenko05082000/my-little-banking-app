@@ -9,15 +9,19 @@ import {
 import { Provider } from "react-redux";
 import type { LinksFunction } from "react-router";
 
-import "./app.css";
+import appCssUrl from "./app.css?url";
+import reusableCssUrl from "./reusable.css?url";
 import interUrl from "@fontsource-variable/inter/index.css?url";
 
 import type { Route } from "./+types/root";
 import { store } from "./store";
 
 export const links: LinksFunction = () => [
+  { rel: "preload", href: appCssUrl, as: "style" },
+  { rel: "stylesheet", href: appCssUrl },
   { rel: "preload", href: interUrl, as: "style" },
   { rel: "stylesheet", href: interUrl },
+  { rel: "stylesheet", href: reusableCssUrl },
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
