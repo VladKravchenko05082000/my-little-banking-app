@@ -8,7 +8,7 @@ export default function DashboardLayout() {
     <FlexBox className="h-dvh w-full overflow-hidden bg-background">
       <Sidebar />
 
-      <Column as="main" className="overflow-y-auto">
+      <Column as="main" className="overflow-y-auto py-5.5 px-7">
         <Outlet />
       </Column>
     </FlexBox>
